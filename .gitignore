@@ -1,0 +1,12 @@
+# Local working files and generated caches.
+work/
+outputs/
+
+# Local secrets and environment files.
+.env
+.env.*
+work/g318-roadbook/amap-jsapi/config.local.js
+
+# OS/editor noise.
+Thumbs.db
+.DS_Store

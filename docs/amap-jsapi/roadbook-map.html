@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>G318 武汉到拉萨摩旅路书地图</title>
+    <link rel="stylesheet" href="./roadbook-map.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="G318 路书地图控制台">
+        <header class="sidebar-header">
+          <p class="eyebrow">G318 Roadbook</p>
+          <h1>武汉到拉萨摩旅地图</h1>
+          <p id="status-text" class="status-text">正在读取本地配置和样例数据...</p>
+        </header>
+
+        <section class="control-section" aria-labelledby="data-title">
+          <div class="section-title-row">
+            <h2 id="data-title">数据</h2>
+            <button id="reload-data" class="text-button" type="button">重载</button>
+          </div>
+          <label class="field-label" for="data-url">数据 URL</label>
+          <input id="data-url" class="text-input" type="text" value="../data/roadbook-map.final.json" />
+          <label class="file-input-label" for="data-file">打开本地 JSON</label>
+          <input id="data-file" class="sr-only" type="file" accept="application/json,.json" />
+        </section>
+
+        <section class="control-section" aria-labelledby="filter-title">
+          <div class="section-title-row">
+            <h2 id="filter-title">筛选</h2>
+            <button id="fit-view" class="text-button" type="button">适配视野</button>
+          </div>
+          <label class="field-label" for="day-filter">行程日</label>
+          <select id="day-filter" class="select-input">
+            <option value="all">全部日期</option>
+          </select>
+        </section>
+
+        <section class="control-section" aria-labelledby="layers-title">
+          <h2 id="layers-title">内容图层</h2>
+          <div class="toggle-grid">
+            <label class="toggle-row"><input type="checkbox" data-layer="routes" checked />每日路线</label>
+            <label class="toggle-row"><input type="checkbox" data-layer="detours" checked />施工替代线</label>
+            <label class="toggle-row"><input type="checkbox" data-layer="overnight" checked />住宿点</label>
+            <label class="toggle-row"><input type="checkbox" data-layer="fuel" checked />加油站</label>
+            <label class="toggle-row"><input type="checkbox" data-layer="medical" checked />急救点</label>
+            <label class="toggle-row"><input type="checkbox" data-layer="repair" checked />维修点</label>
+            <label class="toggle-row"><input type="checkbox" data-layer="risk" checked />风险点</label>
+          </div>
+        </section>
+
+        <section class="control-section" aria-labelledby="base-title">
+          <h2 id="base-title">底图叠加</h2>
+          <div class="toggle-grid">
+            <label class="toggle-row"><input type="checkbox" data-map-layer="satellite" />卫星</label>
+            <label class="toggle-row"><input type="checkbox" data-map-layer="roadNet" />路网</label>
+            <label class="toggle-row"><input type="checkbox" data-map-layer="traffic" />路况</label>
+          </div>
+        </section>
+
+        <section class="control-section day-section" aria-labelledby="days-title">
+          <h2 id="days-title">每日摘要</h2>
+          <div id="day-list" class="day-list" aria-live="polite"></div>
+        </section>
+      </aside>
+
+      <main class="map-panel">
+        <div id="map" class="map-canvas" role="application" aria-label="G318 武汉到拉萨摩旅路线地图"></div>
+        <div class="legend" aria-label="图例">
+          <span><i class="legend-line"></i>每日路线</span>
+          <span><i class="legend-line legend-line-detour"></i>替代线</span>
+          <span><i class="legend-dot legend-overnight"></i>住宿</span>
+          <span><i class="legend-dot legend-fuel"></i>加油</span>
+          <span><i class="legend-dot legend-medical"></i>急救</span>
+          <span><i class="legend-dot legend-repair"></i>维修</span>
+          <span><i class="legend-dot legend-risk"></i>风险</span>
+          <span><i class="legend-dot legend-detour"></i>绕行</span>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://webapi.amap.com/loader.js"></script>
+    <script src="./config.local.js"></script>
+    <script src="./roadbook-map.js"></script>
+  </body>
+</html>
